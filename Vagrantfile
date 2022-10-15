@@ -3,6 +3,7 @@ sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/" /etc/ssh/s
 sudo systemctl restart sshd
 sudo useradd moon
 sudo echo "welcome1" |passwd --stdin moon
+sudo mkdir /home/moon/.ssh
 sudo cp /tmp/authorized_keys /home/moon/.ssh/authorized_keys
 sudo chown moon:moon /home/moon/.ssh/authorized_keys
 sudo su -
