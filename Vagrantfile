@@ -3,6 +3,8 @@ sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/" /etc/ssh/s
 sudo systemctl restart sshd
 sudo useradd moon
 sudo echo "welcome1" |passwd --stdin moon
+sudo cp /tmp/authorized_keys /home/moon/.ssh/authorized_keys
+sudo chown moon:moon /home/moon/.ssh/authorized_keys
 sudo su -
 echo -e "moon\tALL=(ALL)\tNOPASSWD: ALL"> /etc/sudoers.d/moon
 exit
@@ -11,6 +13,7 @@ SCRIPT
 Vagrant.configure(2) do |config|
         #Basic Configuration
         config.vm.box = "centos/7"
+	config.vm.provision "file", source: "~/vagrant/id_rsa.pub", destination: "/tmp/authorized_keys"
 	config.vm.provision "shell", inline: $script
 
         (1..2).each do |i|
