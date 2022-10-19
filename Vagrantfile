@@ -8,7 +8,6 @@ sudo cp /tmp/authorized_keys /home/moon/.ssh/authorized_keys
 sudo chown moon:moon /home/moon/.ssh/authorized_keys
 sudo su -
 echo -e "moon\tALL=(ALL)\tNOPASSWD: ALL"> /etc/sudoers.d/moon
-sudo parted /dev/sdb rm 1
 exit
 SCRIPT
 
