@@ -15,9 +15,6 @@ Vagrant.configure(2) do |config|
         #Basic Configuration
         config.vm.box = "centos/7"
 	config.vm.provision "file", source: "~/vagrant-project/id_rsa.pub", destination: "/tmp/authorized_keys"
-	config.persistent_storage.enabled = true
-	config.persistent_storage.location = "~/vagrant-project/sourcehdd.vdi"
-	config.persistent_storage.size = 1024
 	config.vm.provision "shell", inline: $script
 
         (1..4).each do |i|
@@ -26,6 +23,9 @@ Vagrant.configure(2) do |config|
                 config.vm.define vmName do |server|
                         server.vm.hostname = vmName
                         server.vm.network "public_network", ip: vmIP
+			server.persistent_storage.enabled = true
+			server.persistent_storage.location = "~/vagrant-project/sourcehdd#{i}.vdi"
+			server.persistent_storage.size = 1024
 			server.vm.disk :disk, size: "1G", name: "disk-#{i}"
                 end
         end
