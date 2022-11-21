@@ -14,7 +14,7 @@ SCRIPT
 Vagrant.configure(2) do |config|
         #Basic Configuration
         config.vm.box = "ubuntu/bionic64"
-	config.vm.provision "file", source: "~/vagrant-project/zeeid_rsa.pub", destination: "/tmp/authorized_keys"
+	config.vm.provision "file", source: "~/vagrant-project/id_rsa.pub", destination: "/tmp/authorized_keys"
 	config.vm.provision "shell", inline: $script
 
         (1..2).each do |i|
