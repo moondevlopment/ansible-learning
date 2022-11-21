@@ -4,7 +4,6 @@ sudo service sshd restart
 sudo useradd moon
 sudo echo "welcome1" |passwd --stdin moon
 sudo mkdir /home/moon/.ssh
-https://github.com/moondevlopment/ansible-learning.git
 sudo chown moon:moon /home/moon/.ssh/authorized_keys
 sudo su -
 echo -e "moon\tALL=(ALL)\tNOPASSWD: ALL"> /etc/sudoers.d/moon
