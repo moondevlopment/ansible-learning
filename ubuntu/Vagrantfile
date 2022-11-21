@@ -2,7 +2,7 @@ $script = <<-SCRIPT
 sudo sed -i "s/PasswordAuthentication no/PasswordAuthentication yes/" /etc/ssh/sshd_config
 sudo service ssh restart
 sudo useradd -m -d /home/moon -s /bin/bash moon 
-sudo echo "moon:welcome" | sudo chpasswd 
+sudo echo "moon:welcome1" | sudo chpasswd 
 sudo mkdir -p /home/moon/.ssh
 sudo cp /tmp/authorized_keys /home/moon/.ssh/authorized_keys
 sudo chown moon:moon /home/moon/.ssh/authorized_keys
